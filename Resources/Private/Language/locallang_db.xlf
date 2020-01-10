@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-01-09T12:17:04Z" product-name="iframecache">
+		<header/>
+		<body>
+			<trans-unit id="plugin.iframecache.title">
+				<source>iFrame Cache</source>
+			</trans-unit>
+			<trans-unit id="plugin.iframecache.description">
+				<source>Create a cache iFrame Element. That way you can show the content of a foreign page regardless, if it is available or not.</source>
+			</trans-unit>
+			<trans-unit id="tabs.configuration">
+				<source>iFrame</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

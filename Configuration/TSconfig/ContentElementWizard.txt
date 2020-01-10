@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.special {
+  elements {
+    iframecache {
+      iconIdentifier = ext-iframecache-wizard-icon
+      title = LLL:EXT:iframecache/Resources/Private/Language/locallang_db.xlf:plugin.iframecache.title
+      description = LLL:EXT:iframecache/Resources/Private/Language/locallang_db.xlf:plugin.iframecache.description
+      tt_content_defValues {
+        CType = iframecache
+      }
+    }
+  }
+  show := addToList(iframecache)
+}

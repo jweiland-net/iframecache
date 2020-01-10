@@ -1,0 +1,11 @@
+tt_content.iframecache {
+  templateRootPaths.0 = EXT:iframecache/Resources/Private/Templates/
+  dataProcessing {
+    1 = JWeiland\Iframecache\DataProcessing\UpdateIframeSourceProcessor
+    1 {
+      options {
+        myOption = SomeValue
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:iframecache/Resources/Private/Language/FlexForms.xlf:sheetGeneral</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<src>
+						<TCEforms>
+							<label>LLL:EXT:iframecache/Resources/Private/Language/FlexForms.xlf:src</label>
+							<config>
+								<type>input</type>
+								<size>50</size>
+								<default />
+							</config>
+						</TCEforms>
+					</src>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>
