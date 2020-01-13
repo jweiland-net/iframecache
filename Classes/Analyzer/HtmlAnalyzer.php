@@ -29,6 +29,14 @@ class HtmlAnalyzer extends AbstractAnalyzer
 
     public function analyze(string $uri = ''): string
     {
+        if (is_file($this->cacheFolder . 'index.html')) {
+            return current(
+                GeneralUtility::removePrefixPathFromList(
+                    [$this->cacheFolder],
+                    PATH_site
+                )
+            ) . 'index.html';
+        }
         $this->sourceUri = $uri ?: $this->sourceUri;
         $content = $this->getHtmlSource();
         if (empty($content)) {

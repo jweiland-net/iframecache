@@ -17,6 +17,7 @@ namespace JWeiland\Iframecache\DataProcessing;
 
 use JWeiland\Iframecache\Analyzer\HtmlAnalyzer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
 use TYPO3\CMS\Extbase\Service\FlexFormService;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -53,6 +54,7 @@ class UpdateIframeSourceProcessor implements DataProcessorInterface
             return $processedData;
         }
 
+        $this->htmlAnalyzer->setContentElementUid((int)$cObj->data['uid']);
         $this->updateProcessedData($processedData);
 
         // set the files into a variable, default "files"
@@ -73,7 +75,9 @@ class UpdateIframeSourceProcessor implements DataProcessorInterface
     protected function getJsScript(string $jsScript): string
     {
         if (StringUtility::beginsWith('EXT:', $jsScript)) {
-            $jsScript = GeneralUtility::getFileAbsFileName($jsScript);
+            $jsScript = PathUtility::getAbsoluteWebPath(
+                GeneralUtility::getFileAbsFileName($jsScript)
+            );
         }
         return $jsScript;
     }

@@ -30,6 +30,11 @@ abstract class AbstractAnalyzer
     protected $cacheFolder = '';
 
     /**
+     * @var int
+     */
+    protected $contentElementUid = 0;
+
+    /**
      * @var string
      */
     protected $sourceUri = '';
@@ -39,8 +44,9 @@ abstract class AbstractAnalyzer
      */
     protected $htmlParser;
 
-    public function __construct(HtmlParser $htmlParser = null)
+    public function __construct(int $contentElementUid = 0, HtmlParser $htmlParser = null)
     {
+        $this->contentElementUid = $contentElementUid;
         $this->setCacheFolder($this->getCacheFolder());
         $this->htmlParser = $htmlParser ?? GeneralUtility::makeInstance(HtmlParser::class);
     }
@@ -50,15 +56,19 @@ abstract class AbstractAnalyzer
         $this->cacheFolder = $cacheFolder;
     }
 
+    public function setContentElementUid(int $contentElementUid)
+    {
+        $this->contentElementUid = $contentElementUid;
+        $this->setCacheFolder($this->getCacheFolder());
+    }
+
     protected function getCacheFolder(): string
     {
-        return PATH_site . sprintf(
-            'typo3temp/assets/iframecache/%s/%s/%s/%s/',
-            date('Y'),
-            date('m'),
-            date('d'),
-            date('Hi')
+        $cacheFolder = sprintf(
+            'typo3temp/assets/iframecache/%d/',
+            $this->contentElementUid
         );
+        return PATH_site . $cacheFolder;
     }
 
     public function downloadUriToTempDir(string $uri, string $subFolder, string $tagName = ''): string
@@ -94,6 +104,7 @@ abstract class AbstractAnalyzer
             $object = GeneralUtility::makeInstance($className);
             if ($object instanceof AnalyzerInterface) {
                 $object->setSourceUri($this->sourceUri ?: $uri);
+                $object->setContentElementUid($this->contentElementUid);
                 $object->setCacheFolder($this->cacheFolder);
                 $content = $object->analyze($content, $uri, $tagName);
             }

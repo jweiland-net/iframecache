@@ -22,15 +22,18 @@ interface AnalyzerInterface
 {
     /**
      * @param string $cacheFolder
-     * @return mixed
      */
     public function setCacheFolder(string $cacheFolder);
 
     /**
      * @param string $sourceUri
-     * @return mixed
      */
     public function setSourceUri(string $sourceUri);
+
+    /**
+     * @param int $contentElementUid
+     */
+    public function setContentElementUid(int $contentElementUid);
 
     /**
      * @param string $content The full content of the referenced file
