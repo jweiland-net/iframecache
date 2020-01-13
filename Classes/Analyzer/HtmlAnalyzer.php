@@ -27,17 +27,12 @@ class HtmlAnalyzer extends AbstractAnalyzer
      */
     protected $templateParts = [];
 
-    /**
-     * @param string $uri
-     * @return string
-     */
-    public function analyze(string $uri): string
+    public function analyze(string $uri = ''): string
     {
-        $this->setSourceUri($uri);
-        $this->setCacheFolder($this->getCacheFolder());
-        $content = $this->getHtmlSource($this->sourceUri);
+        $this->sourceUri = $uri ?: $this->sourceUri;
+        $content = $this->getHtmlSource();
         if (empty($content)) {
-            return $uri;
+            return $this->sourceUri;
         }
 
         $this->templateParts = $this->htmlParser->splitTags('img,script,link', $content);
@@ -138,10 +133,10 @@ class HtmlAnalyzer extends AbstractAnalyzer
         return $value;
     }
 
-    protected function getHtmlSource(string $uri): string
+    protected function getHtmlSource(): string
     {
-        if (GeneralUtility::isValidUrl($uri)) {
-            return GeneralUtility::getUrl($uri);
+        if (GeneralUtility::isValidUrl($this->sourceUri)) {
+            return GeneralUtility::getUrl($this->sourceUri);
         }
         return '';
     }

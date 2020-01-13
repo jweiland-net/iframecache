@@ -35,29 +35,6 @@ class ScriptAnalyzer extends AbstractAnalyzer implements AnalyzerInterface
             return $content;
         }
 
-        $jsFileParts = pathinfo($uri);
-        $jsFileDirectory = rtrim($jsFileParts['dirname'], '/') . '/';
-
         return $content;
-
-        /*return preg_replace_callback(
-            '/url\((?<quote>["\']?)(?<file>.*?)["\']?\)/',
-            function ($match) use ($jsFileDirectory) {
-                $localFile = $this->downloadAndReplaceUri($jsFileDirectory, $match['file']);
-                return sprintf(
-                    'url(%s%s%s)',
-                    $match['quote'],
-                    $localFile,
-                    $match['quote']
-                );
-            },
-            $content
-        );*/
-    }
-
-    protected function downloadAndReplaceUri(string $cssFileDirectory, string $uriInCssFile)
-    {
-        $resolvedFileToDownload = GeneralUtility::resolveBackPath($cssFileDirectory . $uriInCssFile);
-        return $this->downloadUriToTempDir($resolvedFileToDownload, 'assets');
     }
 }

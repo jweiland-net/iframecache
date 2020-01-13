@@ -10,16 +10,57 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<src>
+					<mode>
 						<TCEforms>
-							<label>LLL:EXT:iframecache/Resources/Private/Language/FlexForms.xlf:src</label>
+							<label>LLL:EXT:iframecache/Resources/Private/Language/FlexForms.xlf:mode</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>radio</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">iFrame</numIndex>
+										<numIndex index="1">iframe</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">JavaScript</numIndex>
+										<numIndex index="1">script</numIndex>
+									</numIndex>
+								</items>
+								<default>iframe</default>
+							</config>
+						</TCEforms>
+					</mode>
+					<iFrameSource>
+						<TCEforms>
+							<label>LLL:EXT:iframecache/Resources/Private/Language/FlexForms.xlf:iFrameSource</label>
+							<displayCond>FIELD:mode:=:iframe</displayCond>
 							<config>
 								<type>input</type>
 								<size>50</size>
-								<default />
 							</config>
 						</TCEforms>
-					</src>
+					</iFrameSource>
+					<jsScript>
+						<TCEforms>
+							<label>LLL:EXT:iframecache/Resources/Private/Language/FlexForms.xlf:jsScript</label>
+							<displayCond>FIELD:mode:=:script</displayCond>
+							<config>
+								<type>input</type>
+								<size>50</size>
+							</config>
+						</TCEforms>
+					</jsScript>
+					<jsAttributes>
+						<TCEforms>
+							<label>LLL:EXT:iframecache/Resources/Private/Language/FlexForms.xlf:jsAttributes</label>
+							<displayCond>FIELD:mode:=:script</displayCond>
+							<config>
+								<type>text</type>
+								<cols>50</cols>
+								<rows>10</rows>
+							</config>
+						</TCEforms>
+					</jsAttributes>
 				</el>
 			</ROOT>
 		</sDEF>

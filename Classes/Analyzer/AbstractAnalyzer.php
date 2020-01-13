@@ -41,6 +41,7 @@ abstract class AbstractAnalyzer
 
     public function __construct(HtmlParser $htmlParser = null)
     {
+        $this->setCacheFolder($this->getCacheFolder());
         $this->htmlParser = $htmlParser ?? GeneralUtility::makeInstance(HtmlParser::class);
     }
 
@@ -60,7 +61,7 @@ abstract class AbstractAnalyzer
         );
     }
 
-    protected function downloadUriToTempDir(string $uri, string $subFolder, string $tagName = ''): string
+    public function downloadUriToTempDir(string $uri, string $subFolder, string $tagName = ''): string
     {
         $folder = rtrim($this->cacheFolder, '/') . '/' . rtrim($subFolder, '/') . '/';
         $content = GeneralUtility::getUrl($uri);
@@ -92,7 +93,7 @@ abstract class AbstractAnalyzer
         if (class_exists($className)) {
             $object = GeneralUtility::makeInstance($className);
             if ($object instanceof AnalyzerInterface) {
-                $object->setSourceUri($this->sourceUri);
+                $object->setSourceUri($this->sourceUri ?: $uri);
                 $object->setCacheFolder($this->cacheFolder);
                 $content = $object->analyze($content, $uri, $tagName);
             }
