@@ -1,11 +1,10 @@
 tt_content.iframecache {
   templateRootPaths.0 = EXT:iframecache/Resources/Private/Templates/
   dataProcessing {
-    1 = JWeiland\Iframecache\DataProcessing\UpdateIframeSourceProcessor
-    1 {
-      options {
-        myOption = SomeValue
-      }
-    }
+    #1 = JWeiland\Iframecache\DataProcessing\UpdateIframeSourceProcessor
+    2 = JWeiland\Iframecache\DataProcessing\AddWallsProcessor
   }
+}
+page.includeCSS {
+  wall-fluid = EXT:iframecache/Resources/Public/Css/WallFluid.css
 }

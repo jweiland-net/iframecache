@@ -7,9 +7,21 @@
 				<source>General</source>
 				<target>Allgemein</target>
 			</trans-unit>
-			<trans-unit id="src">
-				<source>Link for iFrame</source>
-				<target>Link für den iFrame</target>
+			<trans-unit id="mode">
+				<source>Mode</source>
+				<target>Modus</target>
+			</trans-unit>
+			<trans-unit id="iFrameSource">
+				<source>URI for iFrame</source>
+				<target>URI für den iFrame</target>
+			</trans-unit>
+			<trans-unit id="jsScript">
+				<source>Path to JS which renders the iFrame</source>
+				<target>Pfad zur JS, das den iframe rendert</target>
+			</trans-unit>
+			<trans-unit id="jsAttributes">
+				<source>Attributes for script-Tag</source>
+				<target>Attribute für das script-Tag</target>
 			</trans-unit>
 		</body>
 	</file>

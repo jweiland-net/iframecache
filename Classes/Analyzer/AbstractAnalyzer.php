@@ -186,6 +186,12 @@ abstract class AbstractAnalyzer
         ) {
             // We have a full URI. Nothing to build
             return $uri;
+        } elseif (
+            array_key_exists('host', $uriParts)
+            && !empty($uriParts['host'])
+        ) {
+            // Something like '//apis.google.com/libraries/jquery...'
+            return 'https://' . ltrim($uri, '/');
         }
 
         // build Download URI

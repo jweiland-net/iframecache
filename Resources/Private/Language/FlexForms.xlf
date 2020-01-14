@@ -6,8 +6,17 @@
 			<trans-unit id="sheetGeneral">
 				<source>General</source>
 			</trans-unit>
-			<trans-unit id="src">
-				<source>Link for iFrame</source>
+			<trans-unit id="mode">
+				<source>Mode</source>
+			</trans-unit>
+			<trans-unit id="iFrameSource">
+				<source>URI for iFrame</source>
+			</trans-unit>
+			<trans-unit id="jsScript">
+				<source>Path to JS which renders the iFrame</source>
+			</trans-unit>
+			<trans-unit id="jsAttributes">
+				<source>Attributes for script-Tag</source>
 			</trans-unit>
 		</body>
 	</file>
