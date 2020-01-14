@@ -87,7 +87,7 @@
 </f:section>
 
 <f:section name="renderInstagram">
-	<a href="https://www.instagram.com/{wall.external_name}/" class="checkin-user-image" target="_blank" rel="nofollow noopener" style="background-image: url(https://dpt5udl8tkpo9.cloudfront.net/slimproxy/?src={wall.post_image->f:format.urlencode()}&amp;w=200&amp;h=200&amp;q=85&amp;nu=1&amp;salt=&amp;key=b944a3512d2c64c7dd4707ba58aa21a3)"></a>
+	<a href="https://www.instagram.com/{wall.external_name}/" class="checkin-user-image" target="_blank" rel="nofollow noopener" style="background-image: url(https://dpt5udl8tkpo9.cloudfront.net/slimproxy/?src={wall.external_image->f:format.urlencode()}&amp;w=200&amp;h=200&amp;q=85&amp;nu=1&amp;salt=&amp;key=b944a3512d2c64c7dd4707ba58aa21a3)"></a>
 	<div class="checkin-user-name" title="@{wall.external_name} (external_fullname)">
 		<a href="https://www.instagram.com/{wall.external_name}/" target="_blank" rel="nofollow noopener">
 			<span class="checkin-user-name-part checkin-user-name-full">{wall.external_fullname}</span>
