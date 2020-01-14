@@ -50,16 +50,19 @@ class AddWallsProcessor implements DataProcessorInterface
         ) {
             DebuggerUtility::var_dump($walls);
         }
-        $processedData['walls'] = $this->sanitizeData($walls[1]);
+        $processedData['walls'] = $this->sanitizeData($walls[1] ?? []);
         return $processedData;
     }
 
     protected function sanitizeData(array $walls): array
     {
-        foreach ($walls as &$wall) {
-            foreach ($wall as $key => &$value) {
+        foreach ($walls as $key => $wall) {
+            foreach ($wall as $property => $value) {
                 if (is_string($value)) {
-                    $value = utf8_decode($value);
+                    $walls[$key][$property] = utf8_decode($value);
+                }
+                if ($property === 'post_image_aspect_ratio') {
+                    $walls[$key]['post_image_padding'] = 100 / $value;
                 }
             }
         }

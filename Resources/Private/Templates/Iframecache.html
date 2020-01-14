@@ -36,7 +36,7 @@
 					<f:if condition="{wall.post_image}">
 						<div class="checkin-image-wrapper checkin-image-preview-holder">
 							<div class="checkin-image" data-action="show-detail"
-									 style="background-image:url(https://dpt5udl8tkpo9.cloudfront.net/slimproxy/?src={wall.post_image->f:format.urlencode()}&amp;w=700&amp;h=&amp;q=85&amp;nu=1&amp;salt=&amp;key={wall.post_image_key}); padding-bottom: 66.79982097647978%">
+									 style="background-image:url(https://dpt5udl8tkpo9.cloudfront.net/slimproxy/?src={wall.post_image->f:format.urlencode()}&amp;w=700&amp;h=&amp;q=85&amp;nu=1&amp;salt=&amp;key={wall.post_image_key}); padding-bottom: {wall.post_image_padding}%">
 								<a href="{wall.post_link}" target="_blank"
 									 rel="nofollow noopener" class="checkin-image-link"></a>
 							</div>
