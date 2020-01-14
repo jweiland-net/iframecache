@@ -50,7 +50,19 @@ class AddWallsProcessor implements DataProcessorInterface
         ) {
             DebuggerUtility::var_dump($walls);
         }
-        $processedData['walls'] = $walls[1];
+        $processedData['walls'] = $this->sanitizeData($walls[1]);
         return $processedData;
+    }
+
+    protected function sanitizeData(array $walls): array
+    {
+        foreach ($walls as &$wall) {
+            foreach ($wall as $key => &$value) {
+                if (is_string($value)) {
+                    $value = utf8_decode($value);
+                }
+            }
+        }
+        return $walls;
     }
 }

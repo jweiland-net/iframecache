@@ -89,6 +89,7 @@ class WallsService
             $this->getHeaders(),
             $errors
         );
+
         if (is_string($result)) {
             $data = $this->getDataFromResult($result, 3);
             if (!empty($data)) {

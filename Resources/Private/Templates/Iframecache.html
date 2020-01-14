@@ -3,9 +3,11 @@
 				xmlns:i="http://typo3.org/ns/JWeiland/Iframecache/ViewHelpers"
 				data-namespace-typo3-fluid="true"
 >
+
 <f:layout name="Default"/>
+
 <f:section name="Main">
-	<f:cObject typoscriptObjectPath="tt_content.iframecache.20" data="{data}" table="tt_content"/>
+	<f:debug>{walls}</f:debug>
 
 	<div class="socialwall_container" style="position: relative;">
 		<f:for each="{walls}" as="wall">

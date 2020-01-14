@@ -10,10 +10,6 @@ call_user_func(
 tt_content.iframecache =< lib.contentElement
 tt_content.iframecache {
     templateName = Iframecache
-    20 = USER
-    20 {
-        userFunc = JWeiland\\Iframecache\\Controller\\IframeController->mainAction
-    }
 }');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript(
             'iframecache',
