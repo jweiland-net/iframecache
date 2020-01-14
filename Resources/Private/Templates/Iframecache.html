@@ -15,9 +15,16 @@
 			<div class="checkin-wrapper checkin-wrapper-{wall.id} checkin-wrapper-with-image checkin-wrapper-with-message checkin-wrapper-with-image-and-message is-visible masonrygrid-item"
 					 data-id="{wall.id}"
 					 data-original-id="{wall.id}"
-					 style="position: absolute; left: 0px; top: 0px;"
 			>
-				<div class="checkin checkin-{wall.id} checkin-color-1 checkin-with-image checkin-with-message checkin-with-image-and-message"
+				<f:if condition="{wall.post_image}">
+					<f:then>
+						<f:variable name="checkinClass">checkin checkin-{wall.id} checkin-color-1 checkin-with-image checkin-with-message checkin-with-image-and-message</f:variable>
+					</f:then>
+					<f:else>
+						<f:variable name="checkinClass">checkin checkin-{wall.id} checkin-color-1 checkin-with-message</f:variable>
+					</f:else>
+				</f:if>
+				<div class="{checkinClass}"
 						 data-id="{wall.id}"
 						 data-original-id="{wall.id}"
 						 data-weight="{wall.weight}"
