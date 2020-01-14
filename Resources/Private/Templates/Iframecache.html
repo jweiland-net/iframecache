@@ -21,7 +21,7 @@
 						<f:variable name="checkinClass">checkin checkin-{wall.id} checkin-color-1 checkin-with-image checkin-with-message checkin-with-image-and-message</f:variable>
 					</f:then>
 					<f:else>
-						<f:variable name="checkinClass">checkin checkin-{wall.id} checkin-color-1 checkin-with-message</f:variable>
+						<f:variable name="checkinClass">checkin checkin-{wall.id} checkin-color-1 checkin-with-message checkin-without-image</f:variable>
 					</f:else>
 				</f:if>
 				<div class="{checkinClass}"
@@ -44,7 +44,7 @@
 							</div>
 						</div>
 					</f:if>
-					<div class="checkin-message" dir="auto">{wall.html_comment->f:format.raw()}</div>
+					<div class="checkin-message" dir="auto">{wall.html_comment->f:format.raw()->f:format.crop(maxCharacters: 200, respectWordBoundaries: 1, respectHtml: 1)}</div>
 					<div class="checkin-user clearfix">
 						<f:render section="renderFooter" arguments="{_all}" />
 					</div>
