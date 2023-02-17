@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Iframecache\Analyzer;
 
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -29,7 +30,7 @@ class HtmlAnalyzer extends AbstractAnalyzer
             return current(
                 GeneralUtility::removePrefixPathFromList(
                     [$this->cacheFolder],
-                    PATH_site
+                    Environment::getPublicPath() . '/'
                 )
             ) . 'index.html';
         }
@@ -55,7 +56,7 @@ class HtmlAnalyzer extends AbstractAnalyzer
         );
     }
 
-    protected function updateTagParts(array $tagParts, string $attribute, string $subFolder)
+    protected function updateTagParts(array $tagParts, string $attribute, string $subFolder): void
     {
         foreach ($tagParts as $key => $tagPart) {
             $remoteSourcePath = $this->getAttributeFromTagPart($tagPart, $attribute);
@@ -77,7 +78,7 @@ class HtmlAnalyzer extends AbstractAnalyzer
         return ltrim($parts[0], '<');
     }
 
-    public function getScriptParts()
+    public function getScriptParts(): array
     {
         $scriptParts = $this->getPartsFromTemplateStartingWithTag('script');
 
@@ -91,7 +92,7 @@ class HtmlAnalyzer extends AbstractAnalyzer
         return $scriptParts;
     }
 
-    public function getLinkParts()
+    public function getLinkParts(): array
     {
         $linkParts = $this->getPartsFromTemplateStartingWithTag('link');
 
@@ -105,7 +106,7 @@ class HtmlAnalyzer extends AbstractAnalyzer
         return $linkParts;
     }
 
-    public function getImgParts()
+    public function getImgParts(): array
     {
         return $this->getPartsFromTemplateStartingWithTag('img');
     }
@@ -122,7 +123,7 @@ class HtmlAnalyzer extends AbstractAnalyzer
         return $parts;
     }
 
-    public function updatePartInTemplate(int $key, $content)
+    public function updatePartInTemplate(int $key, $content): void
     {
         $this->templateParts[$key] = $content;
     }
@@ -130,7 +131,7 @@ class HtmlAnalyzer extends AbstractAnalyzer
     public function getAttributeFromTagPart(string $tagPart, string $attribute): string
     {
         $value = '';
-        list($attributes, $metaData) = $this->htmlParser->get_tag_attributes($tagPart);
+        [$attributes, $metaData] = $this->htmlParser->get_tag_attributes($tagPart);
         if (array_key_exists($attribute, $attributes)) {
             $value = $attributes[$attribute];
         }

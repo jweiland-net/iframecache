@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Iframecache\Hooks;
 
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -20,16 +21,14 @@ class DataHandler
 {
     /**
      * Flushes the cache if a tt_content record was edited.
-     *
-     * @param array $params
      */
-    public function clearCachePostProc(array $params)
+    public function clearCachePostProc(array $params): void
     {
         if (
             (isset($params['table']) && $params['table'] === 'tt_content')
             || (isset($params['cacheCmd']) && in_array($params['cacheCmd'], ['all', 'pages', 'system'], true))
         ) {
-            GeneralUtility::flushDirectory(PATH_site . 'typo3temp/assets/iframecache', true);
+            GeneralUtility::rmdir(Environment::getPublicPath() . '/typo3temp/assets/iframecache', true);
         }
     }
 }

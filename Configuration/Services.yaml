@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  JWeiland\Iframecache\:
+    resource: '../Classes/*'
+
+  # Called by makeInstance in ContentDataProcessor
+  JWeiland\Iframecache\DataProcessing\UpdateIframeSourceProcessor:
+    public: true

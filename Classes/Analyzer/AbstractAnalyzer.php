@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace JWeiland\Iframecache\Analyzer;
 
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Html\HtmlParser;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
@@ -64,7 +65,8 @@ abstract class AbstractAnalyzer
             'typo3temp/assets/iframecache/%d/',
             $this->contentElementUid
         );
-        return PATH_site . $cacheFolder;
+
+        return Environment::getPublicPath() . '/' . $cacheFolder;
     }
 
     public function downloadUriToTempDir(string $uri, string $subFolder, string $tagName = ''): string
@@ -83,7 +85,7 @@ abstract class AbstractAnalyzer
     {
         GeneralUtility::writeFileToTypo3tempDir($path, $content);
 
-        return '/' . current(GeneralUtility::removePrefixPathFromList([$path], PATH_site));
+        return '/' . current(GeneralUtility::removePrefixPathFromList([$path], Environment::getPublicPath() . '/'));
     }
 
     protected function postProcessContent(string $content, string $uri, string $tagName): string
@@ -133,7 +135,7 @@ abstract class AbstractAnalyzer
         }
 
         if (!array_key_exists('scheme', $uriParts) || empty($uriParts['scheme'])) {
-            throw new \Exception('Source URI must start with a scheme like http://');
+            throw new \Exception('Source URI must start with a scheme like https://');
         }
 
         if (!array_key_exists('host', $uriParts) || empty($uriParts['host'])) {
