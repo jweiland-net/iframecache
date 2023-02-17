@@ -3,9 +3,9 @@
 
 ..  _start:
 
-======
+===========
 Iframecache
-======
+===========
 
 :Extension key:
     iframecache
@@ -45,7 +45,6 @@ With `iframecache` you can implement a little forum to your TYPO3 page.
     Introduction/Index
     User/Index
     Installation/Index
-    Configuration/Index
     ChangeLog/Index
 
 ..  Meta Menu
