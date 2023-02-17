@@ -3,7 +3,7 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-call_user_func(function () {
+call_user_func(static function () {
     // Configure frontend plugin
     $pluginContent = trim('
 tt_content.iframecache =< lib.contentElement

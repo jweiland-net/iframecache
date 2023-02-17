@@ -47,8 +47,3 @@ On non composer based TYPO3 installations you can install `iframecache` still ov
 
     Use the search field to find `iframecache`. Choose the `iframecache` line from the search result and click on the cloud
     icon to install `iframecache`.
-
-Next step
-=========
-
-:ref:`Configure iframecache <configuration>`.
