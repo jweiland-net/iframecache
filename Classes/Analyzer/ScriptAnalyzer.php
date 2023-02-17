@@ -11,8 +11,6 @@ declare(strict_types=1);
 
 namespace JWeiland\Iframecache\Analyzer;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /**
  * SCRIPT Analyzer
  */
