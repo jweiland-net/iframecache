@@ -1,21 +1,16 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Iframecache\ViewHelpers;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the iframecache project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/iframecache.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+namespace JWeiland\Iframecache\ViewHelpers;
+
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
@@ -34,10 +29,7 @@ class BuildTagAttributesViewHelper extends AbstractViewHelper
      */
     protected $escapeOutput = false;
 
-    /**
-     * Initialize all arguments.
-     */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument(
             'attributes',
@@ -50,14 +42,12 @@ class BuildTagAttributesViewHelper extends AbstractViewHelper
 
     /**
      * Implements a ViewHelper to generate HTML Tag Attributes
-     *
-     * @param array $arguments
-     * @param \Closure $renderChildrenClosure
-     * @param RenderingContextInterface $renderingContext
-     * @return string
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
-    {
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ): string {
         $attributes = [];
         foreach ($renderChildrenClosure() as $attribute => $value) {
             if ($value === '' || $attribute === $value) {
@@ -70,6 +60,7 @@ class BuildTagAttributesViewHelper extends AbstractViewHelper
                 );
             }
         }
+
         return implode(' ', $attributes);
     }
 }

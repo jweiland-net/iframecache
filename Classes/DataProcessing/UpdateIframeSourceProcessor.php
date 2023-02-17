@@ -1,25 +1,21 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Iframecache\DataProcessing;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the iframecache project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/iframecache.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
 
+namespace JWeiland\Iframecache\DataProcessing;
+
 use JWeiland\Iframecache\Analyzer\HtmlAnalyzer;
+use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
-use TYPO3\CMS\Extbase\Service\FlexFormService;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
@@ -33,9 +29,9 @@ class UpdateIframeSourceProcessor implements DataProcessorInterface
      */
     protected $htmlAnalyzer;
 
-    public function __construct(HtmlAnalyzer $htmlAnalyzer = null)
+    public function __construct(HtmlAnalyzer $htmlAnalyzer)
     {
-        $this->htmlAnalyzer = $htmlAnalyzer ?? GeneralUtility::makeInstance(HtmlAnalyzer::class);
+        $this->htmlAnalyzer = $htmlAnalyzer;
     }
 
     /**
@@ -48,8 +44,12 @@ class UpdateIframeSourceProcessor implements DataProcessorInterface
      * @return array the processed data as key/value store
      * @throws \Exception
      */
-    public function process(ContentObjectRenderer $cObj, array $contentObjectConfiguration, array $processorConfiguration, array $processedData)
-    {
+    public function process(
+        ContentObjectRenderer $cObj,
+        array $contentObjectConfiguration,
+        array $processorConfiguration,
+        array $processedData
+    ): array {
         if (isset($processorConfiguration['if.']) && !$cObj->checkIf($processorConfiguration['if.'])) {
             return $processedData;
         }
@@ -82,7 +82,7 @@ class UpdateIframeSourceProcessor implements DataProcessorInterface
         return $jsScript;
     }
 
-    protected function updateProcessedData(array &$processedData)
+    protected function updateProcessedData(array &$processedData): void
     {
         $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
         $conf = $flexFormService->convertFlexFormContentToArray(
