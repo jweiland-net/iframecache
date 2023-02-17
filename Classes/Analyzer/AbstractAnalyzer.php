@@ -1,19 +1,15 @@
 <?php
-declare(strict_types = 1);
-namespace JWeiland\Iframecache\Analyzer;
+
+declare(strict_types=1);
 
 /*
- * This file is part of the iframecache project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
+ * This file is part of the package jweiland/iframecache.
  *
  * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Iframecache\Analyzer;
 
 use TYPO3\CMS\Core\Html\HtmlParser;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -51,12 +47,12 @@ abstract class AbstractAnalyzer
         $this->htmlParser = $htmlParser ?? GeneralUtility::makeInstance(HtmlParser::class);
     }
 
-    public function setCacheFolder(string $cacheFolder)
+    public function setCacheFolder(string $cacheFolder): void
     {
         $this->cacheFolder = $cacheFolder;
     }
 
-    public function setContentElementUid(int $contentElementUid)
+    public function setContentElementUid(int $contentElementUid): void
     {
         $this->contentElementUid = $contentElementUid;
         $this->setCacheFolder($this->getCacheFolder());
@@ -76,6 +72,7 @@ abstract class AbstractAnalyzer
         $folder = rtrim($this->cacheFolder, '/') . '/' . rtrim($subFolder, '/') . '/';
         $content = GeneralUtility::getUrl($uri);
         $path = $folder . md5($content) . '.' . $this->getFileExtension($uri);
+
         return $this->writeFileToTempDir(
             $path,
             $this->postProcessContent($content, $uri, $tagName)
@@ -85,21 +82,17 @@ abstract class AbstractAnalyzer
     protected function writeFileToTempDir(string $path, string $content): string
     {
         GeneralUtility::writeFileToTypo3tempDir($path, $content);
+
         return '/' . current(GeneralUtility::removePrefixPathFromList([$path], PATH_site));
     }
 
-    /**
-     * @param string $content
-     * @param string $uri
-     * @param string $tagName
-     * @return string
-     */
     protected function postProcessContent(string $content, string $uri, string $tagName): string
     {
         $className = sprintf(
             'JWeiland\\Iframecache\\Analyzer\\%sAnalyzer',
             ucfirst(strtolower($tagName))
         );
+
         if (class_exists($className)) {
             $object = GeneralUtility::makeInstance($className);
             if ($object instanceof AnalyzerInterface) {
@@ -116,9 +109,6 @@ abstract class AbstractAnalyzer
     /**
      * In case of compressed files we may have js.gzip as file extension. Various tools return
      * "gzip" only, instead of full extension
-     *
-     * @param string $uri
-     * @return string
      */
     protected function getFileExtension(string $uri): string
     {
@@ -134,11 +124,7 @@ abstract class AbstractAnalyzer
         return '';
     }
 
-    /**
-     * @param string $uri
-     * @throws \Exception
-     */
-    public function setSourceUri(string $uri)
+    public function setSourceUri(string $uri): void
     {
         $uriParts = parse_url($uri);
 
@@ -161,32 +147,29 @@ abstract class AbstractAnalyzer
      * For better cache update, TYPO3 appends a cache identifier to files.
      * Example: /typo3temp/compressed/merged-d2664b26?1564182671
      * This method removes the ? and everything behind
-     *
-     * @param string $uri
-     * @return mixed|string
      */
-    protected function removeQueryPartFromUri(string $uri)
+    protected function removeQueryPartFromUri(string $uri): string
     {
         $uriParts = GeneralUtility::trimExplode('?', $uri);
         if (count($uriParts) > 1) {
             return $uriParts[0];
-        } else {
-            return $uri;
         }
+
+        return $uri;
     }
 
     protected function buildDownloadUri(string $uri): string
     {
         $uriParts = parse_url($uri);
-        if (
-            array_key_exists('scheme', $uriParts)
-            && !empty($uriParts['scheme'])
-            && array_key_exists('host', $uriParts)
-            && !empty($uriParts['host'])
-        ) {
+        if (array_key_exists('scheme', $uriParts)
+        && !empty($uriParts['scheme'])
+        && array_key_exists('host', $uriParts)
+        && !empty($uriParts['host'])) {
             // We have a full URI. Nothing to build
             return $uri;
-        } elseif (
+        }
+
+        if (
             array_key_exists('host', $uriParts)
             && !empty($uriParts['host'])
         ) {
