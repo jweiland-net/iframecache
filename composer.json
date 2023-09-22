@@ -4,7 +4,7 @@
 	"description": "Caches the content of an iFrame",
 	"license": "GPL-2.0-or-later",
 	"keywords": ["typo3", "TYPO3 CMS", "iframe", "cache"],
-	"homepage": "https://www.jweiland.net",
+	"homepage": "https://jweiland.net",
 	"authors": [
 		{
 			"name": "Stefan Froemken",
@@ -23,6 +23,9 @@
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
 		"friendsofphp/php-cs-fixer": "^3.14"
+	},
+	"replace": {
+		"typo3-ter/iframecache": "self.version"
 	},
 	"autoload": {
 		"psr-4": {
