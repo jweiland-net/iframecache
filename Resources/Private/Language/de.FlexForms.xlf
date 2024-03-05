@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-01-09T12:17:04Z" product-name="iframecache">
-		<header/>
-		<body>
-			<trans-unit id="sheetGeneral">
-				<source>General</source>
-				<target>Allgemein</target>
-			</trans-unit>
-			<trans-unit id="mode">
-				<source>Mode</source>
-				<target>Modus</target>
-			</trans-unit>
-			<trans-unit id="iFrameSource">
-				<source>URI for iFrame</source>
-				<target>URI für den iFrame</target>
-			</trans-unit>
-			<trans-unit id="jsScript">
-				<source>Path to JS which renders the iFrame</source>
-				<target>Pfad zur JS, das den iframe rendert</target>
-			</trans-unit>
-			<trans-unit id="jsAttributes">
-				<source>Attributes for script-Tag</source>
-				<target>Attribute für das script-Tag</target>
-			</trans-unit>
-		</body>
-	</file>
+  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-01-09T12:17:04Z" product-name="iframecache">
+    <header/>
+    <body>
+      <trans-unit id="sheetGeneral">
+        <source>General</source>
+        <target state="translated">Allgemein</target>
+      </trans-unit>
+      <trans-unit id="mode">
+        <source>Mode</source>
+        <target state="translated">Modus</target>
+      </trans-unit>
+      <trans-unit id="iFrameSource">
+        <source>URI for iFrame</source>
+        <target state="translated">URI für den iFrame</target>
+      </trans-unit>
+      <trans-unit id="jsScript">
+        <source>Path to JS which renders the iFrame</source>
+        <target state="translated">Pfad zur JS, das den iframe rendert</target>
+      </trans-unit>
+      <trans-unit id="jsAttributes">
+        <source>Attributes for script-Tag</source>
+        <target state="translated">Attribute für das script-Tag</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>
