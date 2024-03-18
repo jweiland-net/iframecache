@@ -3,17 +3,17 @@
   <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-01-09T12:17:04Z" product-name="iframecache">
     <header/>
     <body>
-      <trans-unit id="plugin.iframecache.title">
+      <trans-unit id="plugin.iframecache.title" approved="yes">
         <source>iFrame Cache</source>
-        <target state="needs-translation">iFrame Cache</target>
+        <target state="final">iFrame Cache</target>
       </trans-unit>
-      <trans-unit id="plugin.iframecache.description">
+      <trans-unit id="plugin.iframecache.description" approved="yes">
         <source>Create a cache iFrame Element. That way you can show the content of a foreign page regardless, if it is available or not.</source>
-        <target state="translated">Erstelle einen gecachten iFrame. Auf diese Weise kann der Inhalt einer anderen Seite angezeigt werden, unabhängig davon, ob dieser noch verfügabr ist oder nicht.</target>
+        <target state="final">Erstelle einen gecachten iFrame. Auf diese Weise kann der Inhalt einer anderen Seite angezeigt werden, unabhängig davon, ob dieser noch verfügabr ist oder nicht.</target>
       </trans-unit>
-      <trans-unit id="tabs.configuration">
+      <trans-unit id="tabs.configuration" approved="yes">
         <source>iFrame</source>
-        <target state="needs-translation">iFrame</target>
+        <target state="final">iFrame</target>
       </trans-unit>
     </body>
   </file>
