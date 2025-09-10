@@ -36,3 +36,9 @@ Download and install `iframecache` with the extension manager module.
 1) Include the static TypoScript of the extension.
 2) Insert new content element of type `Iframecache`
 3) Fill up the fields to your need
+
+## 3 Support
+
+Free Support is available via [GitHub Issue Tracker](https://github.com/jweiland-net/iframecache/issues).
+
+For commercial support, please contact us at [support@jweiland.net](support@jweiland.net).
