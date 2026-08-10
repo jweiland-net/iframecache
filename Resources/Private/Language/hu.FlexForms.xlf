@@ -5,23 +5,23 @@
     <body>
       <trans-unit id="sheetGeneral">
         <source>General</source>
-        <target state="needs-translation">General</target>
+        <target state="translated">Általános</target>
       </trans-unit>
       <trans-unit id="mode">
         <source>Mode</source>
-        <target state="needs-translation">Mode</target>
+        <target state="translated">Mód</target>
       </trans-unit>
       <trans-unit id="iFrameSource">
         <source>URI for iFrame</source>
-        <target state="needs-translation">URI for iFrame</target>
+        <target state="translated">iFrame URI-ja</target>
       </trans-unit>
       <trans-unit id="jsScript">
         <source>Path to JS which renders the iFrame</source>
-        <target state="needs-translation">Path to JS which renders the iFrame</target>
+        <target state="translated">Az iFrame-et megjelenítő JS elérési útja</target>
       </trans-unit>
       <trans-unit id="jsAttributes">
         <source>Attributes for script-Tag</source>
-        <target state="needs-translation">Attributes for script-Tag</target>
+        <target state="translated">A script-Tag attribútumai</target>
       </trans-unit>
     </body>
   </file>
